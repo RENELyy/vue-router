@@ -4,10 +4,21 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <h2 @click="$store.commit('add')">{{ $store.state.counter }}</h2>
+    <h2 @click="handleAsyncClick">async: {{ $store.state.counter }}</h2>
+    <h2>doubleCounter: {{ $store.getters.doubleCounter }}</h2>
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    handleAsyncClick () {
+      this.$store.dispatch('add')
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
